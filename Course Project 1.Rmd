@@ -12,11 +12,9 @@ output: html_document
 ### Loading and preprocessing the data
 
 ```{r, echo = TRUE}
-unzip("activity.zip")
 activityData <- read.csv("activity.csv")
 summary(activityData)
 ```
-![plot1](plot1.png) 
 
 Exploring the basics of this data
 ```{r}
@@ -34,6 +32,7 @@ head(activityData)
 stepsPerDay <- aggregate(steps ~ date, activityData, sum, na.rm=TRUE)
 hist(stepsPerDay$steps)
 ```
+![plot1](plot1.png) 
 
 2. Calculate and report the **mean** and **median** total number of steps taken per day
 ```{r, echo = TRUE}
@@ -41,7 +40,8 @@ meanStepsPerDay <- mean(stepsPerDay$steps)
 meanStepsPerDay
 ```
 ```{r, echo = TRUE}
-median(steps)
+medianStepsPerDay <- median(stepsPerDay$steps)
+medianStepsPerDay
 ```
 
 
