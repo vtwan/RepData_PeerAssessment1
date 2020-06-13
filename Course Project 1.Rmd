@@ -6,17 +6,17 @@ output: html_document
 ---
 
 
-
 ## RepData_PeerAssessment1
-
 
 
 ### Loading and preprocessing the data
 
 ```{r, echo = TRUE}
+unzip("activity.zip")
 activityData <- read.csv("activity.csv")
 summary(activityData)
 ```
+![plot1](plot1.png) 
 
 Exploring the basics of this data
 ```{r}
@@ -52,6 +52,7 @@ median(steps)
 stepsPerInterval<-aggregate(steps~interval, data=activityData, mean, na.rm=TRUE)
 plot(steps~interval, data=stepsPerInterval, type="l")
 ```
+![plot2](plot2.png)
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 ```{r, echo = TRUE}
@@ -90,6 +91,7 @@ for(i in 1:nrow(activityDataNoNA)){
 totalStepsPerDayNoNA <- aggregate(steps ~ date, data=activityDataNoNA, sum)
 hist(totalStepsPerDayNoNA$steps)
 ```
+![plot3](plot3.png)
 
 
 ### Are there differences in activity patterns between weekdays and weekends?
@@ -116,3 +118,4 @@ library(lattice)
 xyplot(steps ~ interval | day, stepsByDay, type = "l", layout = c(1, 2), 
     xlab = "Interval", ylab = "Number of steps")
 ```
+![plot4](plot4.png)
